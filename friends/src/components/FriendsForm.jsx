@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const FriendsForm = (props) => {
+const FriendsForm = ({ setFriends }) => {
   const [ friend, setFriend ] = useState({
     name: '',
     age: '',
     email: ''
   });
 
-  const addFriend = event => {
+  const addFriend = (event, obj) => {
     event.preventDefault();
     // const token = localStorage.getItem('token');
       axiosWithAuth()
         .post('http://localhost:5000/api/friends', friend)
         .then(response => {
+          setFriends(response.data)
           console.log('response', response);
         })
         .catch(error => {

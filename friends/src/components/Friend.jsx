@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 
 const Friend = ({ friend, setFriend }) => {
   const { id, name, age, email } = friend;
-  const [ thisFriend, setThisFriend ] = useState({
-    id: id,
-    name: name,
-    email: email,
-    age: age
-  })
+  // const [ thisFriend, setThisFriend ] = useState({
+  //   id: id,
+  //   name: name,
+  //   email: email,
+  //   age: age
+  // })
 
   return (
     <div>
