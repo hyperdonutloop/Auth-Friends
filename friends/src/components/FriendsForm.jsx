@@ -12,7 +12,7 @@ const FriendsForm = ({ setFriends }) => {
     event.preventDefault();
     // const token = localStorage.getItem('token');
       axiosWithAuth()
-        .post('http://localhost:5000/api/friends', friend)
+        .post('/api/friends', friend)
         .then(response => {
           setFriends(response.data)
           console.log('response', response);

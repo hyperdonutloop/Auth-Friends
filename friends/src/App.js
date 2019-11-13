@@ -30,6 +30,18 @@ function App() {
 
 export default App;
 
-//Surrounded app by Router 
-// In the Route component we need to pass two props PATH -> we need to specifiy the path, and COMPONENT-> which component the user needs to see when they navigate to that PATH.
-//PrivateRoute means that it's a protected route
+/*
+1. import BrowserRouter as Router from reac-router-dom
+
+2. Use Router as base component to surround entire app - in index.js surround APP by ROUTER
+
+3. The Route component is the way we delcare what components will be mounted based on what URL's are being requested by the user. In the Route component we need to pass two props PATH -> we need to specifiy the path, and COMPONENT-> which component the user needs to see when they navigate to that PATH.
+
+4. Use exact path - this is to prevent 2 components from showing up on the same page (ex: /, /about)
+
+5. A SWITCH looks through it's children and and renders the first one that matches the current URL, and ignores all others. 
+
+6. PrivateRoute means that it's a protected route. See PrivateRoute.jsx for more.
+
+7. The Link tag is just like an anchor tag. 
+*/

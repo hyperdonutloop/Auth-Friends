@@ -13,7 +13,7 @@ const FriendsList = () => {
 
   const getData = () => {
     axiosWithAuth()
-      .get('http://localhost:5000/api/friends')
+      .get('/api/friends')
       .then(response => {
         setFriends(response.data);
       })
