@@ -34,21 +34,21 @@ const FriendsForm = (props) => {
         type="text"
         name="name" 
         placeholder="name"
-        value={setFriend.name}
+        value={friend.name}
         onChange={handleChanges}
       />
       <input
         type="text"
-        age="age" 
+        name="age" 
         placeholder="age"
-        value={setFriend.age}
+        value={friend.age}
         onChange={handleChanges}
       />
       <input
         type="text"
-        email="email" 
+        name="email" 
         placeholder="email"
-        value={setFriend.email}
+        value={friend.email}
         onChange={handleChanges}
       />
       <button>Add Friend!</button>
