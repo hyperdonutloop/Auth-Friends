@@ -16,13 +16,12 @@ function App() {
             <Link to='/login'>Login</Link>
           </li>
           <li>
-            <Link to='/friends'>My Friends</Link>
+            <Link to='/protected'>My Friends</Link>
           </li>
         </ul>
         <Switch>
-          <PrivateRoute exact path='/friends' component={FriendsList} />
+          <PrivateRoute exact path='/protected' component={FriendsList} />
           <Route path='/login' component={Login} />
-          
         </Switch>
       </div>
     </Router>
@@ -30,3 +29,7 @@ function App() {
 }
 
 export default App;
+
+//Surrounded app by Router 
+// In the Route component we need to pass two props PATH -> we need to specifiy the path, and COMPONENT-> which component the user needs to see when they navigate to that PATH.
+//PrivateRoute means that it's a protected route

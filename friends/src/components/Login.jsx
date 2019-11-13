@@ -1,66 +1,50 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-class Login extends React.Component {
-  state = {
-    credentials: {
-      username: '',
-      password: ''
-    },
-    isLoggedIn: false
+const Login = props => {
+  const [ credentials, setCredentials ] = useState({
+    username: 'Ryan',
+    password: '1234',
+  });
+
+  const handleChange = e => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  handleChange = e => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials, [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  login = e => {
+  const login = e => {
     e.preventDefault();
-    axios
-    .post('http://localhost:5000/api/login', this.state.credentials)
-    .then(response => {
-      console.log('response', response);
-      const { data } = response;
 
-      sessionStorage.setItem('token', data.payload);
-      this.setState({ ...this.state, isLoggedIn: true })
-    });
+    axiosWithAuth()
+      .post('http://localhost:5000/api/login', credentials)
+      .then(response => {
+        localStorage.setItem('token', response.data.payload);
+        props.history.push('/protected');
+      })
+      .catch(error => {
+      alert(error.response.data.error);
+      })
   };
 
-  componentDidMount() {
-    if (sessionStorage.getItem('token')) {
-      this.setState({ ...this.state, isLoggedIn: true });
-    } else {
-      this.setState({ ...this.state, isLoggedIn: false });
-    }
-  }
-
-  render() {
     return (
       <div>
-        <h2>{this.state.isLoggedIn ? 'YOU ARE LOGGED IN, FRIEND!' : 'Login, please!'}</h2>
-        <form onSubmit={this.login}>
+        <h2>Login Please!</h2>
+        <form onSubmit={login}>
           <input
             type='text'
             name='username'
-            value={this.state.credentials.username} 
-            onChange={this.handleChange}
+            // value={username} 
+            onChange={handleChange}
           />
           <input
             type='text'
             name='password'
-            value={this.state.credentials.password}
-            onChange={this.handleChange} 
+            // value={password}
+            onChange={handleChange} 
           />
           <button>Login</button>
         </form>
       </div>
-    )
-  }
-}
+    );
+};
 
 export default Login;
