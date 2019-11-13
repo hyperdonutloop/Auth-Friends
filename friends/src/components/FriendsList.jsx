@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import FriendsForm from './FriendsForm';
+import Friend from './Friend';
 
 
 const FriendsList = () => {
